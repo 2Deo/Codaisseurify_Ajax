@@ -10,5 +10,4 @@ Song.create!([
             {title: "Antenna", artist: bonobo },
             {title: "Highroller", artist: son_sinaa },
 
-
 ])

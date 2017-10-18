@@ -1,0 +1,9 @@
+
+
+<h2>List of songs<h2>
+
+  <% if @artist.songs.any? %>
+  <h3><% @artist.songs.each do |song| %></h3>
+  <p><%= song.title %></p>
+  <% end %>
+<% end %>

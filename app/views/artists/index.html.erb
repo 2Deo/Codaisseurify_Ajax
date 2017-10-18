@@ -1,7 +1,6 @@
-<h1>All Artists</h1>
+<h1>Our Artists</h1>
 
 <% @artists.each do |artist| %>
-<h3><% artist.name %></h3>
-
-<%= link_to artist.name, artist_path(artist) %>
+<%= image_tag artist.remote_image_url, class:"artist_images" %>
+<h3><%= link_to artist.name, artist_path(artist) %></h3>
 <% end %>

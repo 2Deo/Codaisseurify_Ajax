@@ -10,10 +10,17 @@ modeselektor = Artist.create!(name: "Modeselektor", remote_image_url: "https://r
 Song.create!([
             {title: "Come To Daddy", artist: aphex_twin },
             {title: "Windowlicker", artist: aphex_twin },
-            {title: "Milkman", artist: aphex_twin },
-            {title: "Highroller", artist: son_sinaa },
-            {title: "Evil Twin", artist: modeselektor },
-            {title: "German Clap", artist: modeselektor},
-            {title: "Humanized", artist: modeselektor},
+            {title: "Milkman", artist: aphex_twin }
+])
 
+Song.create!([
+{title: "Evil Twin", artist: modeselektor },
+{title: "German Clap", artist: modeselektor},
+{title: "Humanized", artist: modeselektor}
+])
+
+Song.create!([
+            {title: "Return", artist: son_sinaa},
+            {title: "Doom", artist: son_sinaa},
+            {title: "Dogs", artist: son_sinaa }
 ])

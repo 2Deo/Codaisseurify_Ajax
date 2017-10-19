@@ -1,45 +1,36 @@
 class SongsController < ApplicationController
+  before_action :find_artist, only: [:create]
 
   def new
-    @artist = Artist.find(params[:artist_id])
-    @song = @artist.songs.build
+    @song = Song.new
   end
 
   def create
-    @artist = Artist.find(params[:artist_id])
+    @song = @artist.songs.new(song_params)
 
-    @song = @artist.songs.build(song_params)
     if @song.save
-      redirect_to artist_path(@artist), notice: "Song created"
+      redirect_to @artist
     else
-      render 'new'
+      render :new
     end
   end
 
-  def update
-    @artist = Artist.find(params[:artist_id])
-    @song = @artist.songs.find(params[:id])
-  end
 
   def destroy
-    @artist = Artist.find(params[:artist_id])
-    @song = @artist.songs.find(params[:id])
-
-    if @song.destroy
-      redirect_to artist_path(@artist)
-    else
-      render 'new'
+    @song = Song.find(params[:id])
+    @song.destroy
+    redirect_to artists_path
   end
-end
+
 
   private
 
-  def set_song
-  @song = Song.find(params[:id])
+  def find_artist
+    @artist = Artist.find(params[:artist_id])
   end
 
   def song_params
-    params.require(:song).permit(:title)
+    song_params = params.require(:song).permit(:title, :artist_id)
   end
 
 end

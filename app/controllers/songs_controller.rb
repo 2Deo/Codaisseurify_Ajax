@@ -1,11 +1,12 @@
 class SongsController < ApplicationController
-  before_action :find_artist, only: [:create]
+  # before_action :find_artist, only: [:create]
 
   def new
     @song = Song.new
   end
 
   def create
+    @artist = Artist.find(params[:artist_id])
     @song = @artist.songs.new(song_params)
 
     if @song.save
@@ -19,7 +20,7 @@ class SongsController < ApplicationController
   def destroy
     @song = Song.find(params[:id])
     @song.destroy
-    redirect_to artists_path
+    redirect_to @song.artist
   end
 
 

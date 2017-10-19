@@ -9,9 +9,15 @@ class ArtistsController < ApplicationController
       @artist = Artist.find(params[:id])
     end
 
+
    private
 
-   def find_artist
+  def find_artist
     @artist = Artist.find(params[:id])
   end
+
+  def song_params
+    params.require(:song).permit(:name, :artist_id)
+  end
+
 end

@@ -1,9 +1,12 @@
 
-
 <h2>List of songs<h2>
 
   <% if @artist.songs.any? %>
   <h3><% @artist.songs.each do |song| %></h3>
-  <p><%= song.title %></p>
+  <p><%= song.title %>
+  <%= link_to "Delete", artist_song_path(@artist, song), method: :delete %></p>
   <% end %>
 <% end %>
+
+
+<%= link_to "Add a New Song", new_artist_song_path(@artist) %>

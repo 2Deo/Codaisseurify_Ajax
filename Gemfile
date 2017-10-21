@@ -57,6 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 group :test do
+  gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner'
 end
 

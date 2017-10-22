@@ -10,38 +10,24 @@ class SongsController < ApplicationController
       @song = Song.new
     end
 
+
     def create
       @artist = Artist.find(params[:artist_id])
-      Song.create(song_params)
+      @song = @artist.songs.create(song_params)
 
       respond_to do |format|
-      format.html { redirect_to @artist }
-      format.json { render :show, status: :created, location: @artist }
-      format.js { }
+        if @song.save
+          format.html { redirect_to artist_path(@artist), notice: 'Song Created!' }
+          format.json { render :show, status: :created, location: @artist }
+          format.js
+        else
+          format.html { redirect_to root_path }
+          format.json { render json: @artist.errors, status: :unprocessable_entity }
+          format.js
+        end
       end
     end
 
-    # @artist = Artist.find(params[:artist_id])
-    # @song = @artist.songs.new(song_params)
-
-    # if @song.save
-    #   redirect_to @artist
-    # else
-    #   render :new
-    # end
-
-  #   respond_to do |format|
-  #     if @song.save
-  #       format.html { redirect_to @artist}
-  #       format.json { render :show, status: :created, location: @song }
-  #       format.js
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @song.errors, status: unprocessable_entity }
-  #       format.js
-  #     end
-  #   end
-  # end
 
 
   def destroy

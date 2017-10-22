@@ -5,12 +5,16 @@
   </div>
 </div>
 
+
 <h2 class="text-center play_title"><%= @artist.name %>'s Songs:</h2>
 
-<!-- Create a song -->
-<h3 class="text-center"><%= link_to "Add a new #{@artist.name} song",
-new_artist_song_path(@artist), class:"btn btn-success" %></h3>
+<!-- add a song -->
 
+    <%= form_for [@artist, @artist.songs.new], remote: true do |f| %>
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+          <%= f.submit "New Song" %>
+      <% end %>
 
 
 
@@ -27,8 +31,9 @@ new_artist_song_path(@artist), class:"btn btn-success" %></h3>
              <% end %>
     </li
   </ul>
+<!-- end -->
 
-
+<!-- remove artist -->
 <div class="container-fluid buttons_row">
   <div class="col-xs-12">
     <div class="text-center">

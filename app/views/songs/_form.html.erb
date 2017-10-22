@@ -1,0 +1,9 @@
+<%= form_with(model: [ @artist, @artist.songs.build ]) do |form| %>
+
+  <p>
+   <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.button :submit %>
+  </p>
+<% end %>

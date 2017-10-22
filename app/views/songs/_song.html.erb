@@ -1,0 +1,12 @@
+<div class="col-md-4 blog-main box text-center" id="song_<%= song.id %>">
+
+  <div class="panel panel-info">
+
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= song.title %></h3>
+    </div>
+
+
+      <!-- Create a song -->
+      <h3 class="text-center">
+        <%= link_to "Add a new #{@artist.name} song", new_artist_song_path(@artist), class:"btn btn-success" %></h3>

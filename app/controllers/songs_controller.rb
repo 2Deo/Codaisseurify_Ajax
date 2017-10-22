@@ -5,15 +5,21 @@ class SongsController < ApplicationController
       @song = Song.new
     end
 
+    def show
+      @song = @artist.songs.new(song_params)
+      @song = Song.new
+    end
+
     def create
       @artist = Artist.find(params[:artist_id])
       Song.create(song_params)
 
       respond_to do |format|
       format.html { redirect_to @artist }
+      format.json { render :show, status: :created, location: @artist }
       format.js { }
+      end
     end
-  end
 
     # @artist = Artist.find(params[:artist_id])
     # @song = @artist.songs.new(song_params)

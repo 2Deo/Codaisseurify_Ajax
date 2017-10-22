@@ -5,24 +5,29 @@
   </div>
 </div>
 
-<h2 class="text-center play_title"><%= @artist.name %>'s Play Page.</h2>
+<h2 class="text-center play_title"><%= @artist.name %>'s Songs:</h2>
+
+<!-- Create a song -->
 <h3 class="text-center"><%= link_to "Add a new #{@artist.name} song",
 new_artist_song_path(@artist), class:"btn btn-success" %></h3>
 
-<ul>
-<% @songs.each do |song| %>
-
-    <!-- This `id` attribute will help us find the correct element to remove using jQuery -->
-  <li id="<%= song.id %>">
-      <h3 class="text-center"><%= song.title %></h3>
-          <div class="text-center">
-              <!-- `remote: true` -->
-          <%= link_to "Delete", [@artist, song], method: :delete, remote: true %>
-  </li
 
 
-<% end %>
-</ul>
+
+  <!-- Remove song -->
+  <ul>
+  <% @songs.each do |song| %>
+
+      <!-- `id` attribute finds the correct element to remove using jQuery -->
+    <li id="<%= song.id %>">
+        <h3 class="text-center"><%= song.title %></h3>
+            <div class="text-center">
+                <!-- `remote: true` -->
+            <%= link_to "Delete", [@artist, song], method: :delete, remote: true %>
+             <% end %>
+    </li
+  </ul>
+
 
 <div class="container-fluid buttons_row">
   <div class="col-xs-12">

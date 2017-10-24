@@ -1,18 +1,30 @@
-$(function(){
-  $("form").submit(function(event){
-    event.preventDefault();
+// $(function(){
+//   $("form").submit(function(event){
+//     event.preventDefault();
+//
+//     $.ajax({
+//       method: 'DESTROY',
+//       url: action,
+//       data: { title: title }
+//       dataType: 'script'
+//
+//     }).done(function(data){
+//
+//     }).fail()
+//
+//     ;
+//   });
+// });
 
-    var action = $(this).attr('action');
-    var method = $(this).attr('method');
-
-    var title = $(this).find('#song_title').val();
-
-
-    $.ajax({
-          method: method,
-          url: action,
-          data: { title: title }
-
-        });
+function deleteSong(songId) {
+  $.ajax({
+    type: "DELETE",
+    url: "/song/" + songId + ".json",
+    contentType: "application/json",
+    dataType: "json"
+  })
+  .done(function(data) {
+    $('tr[data-id="'+songId+'"]').remove();
+    updateCounters();
   });
-});
+}

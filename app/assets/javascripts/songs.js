@@ -18,13 +18,16 @@
 
 function deleteSong(songId) {
   $.ajax({
-    type: "DELETE",
-    url: "/song/" + songId + ".json",
+    type: "DESTROY",
+    url: "api/songs/" + songId + ".json",
     contentType: "application/json",
     dataType: "json"
+
+
   })
   .done(function(data) {
-    $('tr[data-id="'+songId+'"]').remove();
+    $('li[data-id="'+songId+'"]').remove();
+
     updateCounters();
   });
 }

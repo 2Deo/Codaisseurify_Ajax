@@ -1,4 +1,5 @@
 
+
 <div class="row">
   <div class="text-center">
     <%= image_tag @artist.remote_image_url, class:"artist_show_images" %>
@@ -8,10 +9,11 @@
 
 <h2 class="text-center play_title"><%= @artist.name %>'s Songs:</h2>
 
+
 <!-- add a song -->
 
     <%= form_for [@artist, @artist.songs.new], remote: true do |f| %>
-          <%= f.label :title %>
+           <%= f.label :title %>
           <%= f.text_field :title %>
           <%= f.submit "New Song" %>
       <% end %>
@@ -19,22 +21,22 @@
 
 
   <!-- Remove song -->
-  <ul>
+
   <% @songs.each do |song| %>
 
-      <!-- `id` attribute finds the correct element to remove using jQuery -->
-    <li id="<%= song.id %>">
+
+    <p><id="<%= song.id %>">
         <h3 class="text-center"><%= song.title %></h3>
-            <div class="text-center">
+            <div class="text-center"></div>
             <%= link_to "Delete", [@artist, song], method: :delete, remote: true %>
        <% end %>
-    </li>
-  </ul>
+    </p>
+
 
 <!-- end -->
 
 <!-- remove artist -->
-<div class="container-fluid buttons_row">
+ <div class="container-fluid buttons_row">
   <div class="col-xs-12">
     <div class="text-center">
       <%= link_to artists_path do %>

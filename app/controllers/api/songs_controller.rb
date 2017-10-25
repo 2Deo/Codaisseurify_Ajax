@@ -23,6 +23,10 @@ class Api::SongsController < ApplicationController
         message: "Song created",
         song: song
       }.to_json
+    else
+    render status: 422, json: {
+      errors: song.errors
+    }.to_json
     end
   end
 

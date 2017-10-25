@@ -31,3 +31,22 @@ function deleteSong(songId) {
     updateCounters();
   });
 }
+
+//-- create song
+function createSong(songId) {
+  $.ajax({
+    type: "POST",
+    url: "api/songs.json",
+    data: json.stringify({
+      song: newSong
+    }),
+    contentType: "application/json",
+    dataType: 'json'
+  })
+
+  .done(function(data) {
+    console.log(data);
+
+
+});
+}

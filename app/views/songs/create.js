@@ -1,1 +1,0 @@
-alert("Song is created");

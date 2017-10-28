@@ -2,21 +2,24 @@
   <div class="text-center">
     <%= image_tag @artist.remote_image_url, class:"artist_show_images" %>
   </div></div>
-<h3><%= @artist.name %>'s Songs:</h3>
+<h3><%= @artist.name %>'s Crappy Songs:</h3>
 
 
   <div class="songGroup">
     <ul id="songlist">
       <% @artist.songs.each do |song| %>
       <li id="<%= song.id %>">
-        <div id="delete <%= song.id %>" onclick="deleteSong(<%= song.id %>)" class="btn btn-danger">Delete Song</div>  
+        <div id="delete <%= song.id %>" onclick="deleteSong(<%= song.id %>)" class="btn btn-info">Delete</div>
       <%= song.title %></li>
     <% end %>
     </ul>
   </div>
 
 
-<!-- remove artist -->
-   <%= link_to artists_path do %>
+
+  <h3><a href="#" id="deleteAll">  Delete All Crap </a><h3>
+
+
+<%= link_to artists_path do %>
   <% end %>
 <h3><%= link_to "Delete Artist", artist_path, method: :delete %></h3>

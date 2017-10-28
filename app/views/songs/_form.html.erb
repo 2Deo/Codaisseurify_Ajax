@@ -1,4 +1,4 @@
-<%= form_with(model: [ @artist, @artist.songs.build ]) do |form| %>
+<!-- <%= form_with(model: [ @artist, @artist.songs.build ]) do |form| %>
 
   <p>
    <%= form.text_field :title %>
@@ -6,4 +6,21 @@
   <p>
     <%= form.button :submit %>
   </p>
+<% end %> -->
+
+<!-- <%= song.title %><br>
+<%= link_to "Create", @artist.songs.create, method: 'create' %> -->
+
+<!--reader-->
+
+<%= form_for(song) do |f| %>
+  <div class="form-group <%= song.errors.any? ? 'has-error' : '' %>" id="formgroup-title">
+    <%= f.text_field :title, placeholder: "Add a song", class: 'form-control' %>
+
+    <% if song.errors.any? %>
+      <% song.errors.full_messages.each do |message| %>
+        <span class="help-block"><%= message %></span>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>

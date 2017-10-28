@@ -1,46 +1,25 @@
-
 <div class="row">
   <div class="text-center">
     <%= image_tag @artist.remote_image_url, class:"artist_show_images" %>
+  </div></div>
+<h3><%= @artist.name %>'s Crappy Songs:</h3>
+
+
+  <div class="songGroup">
+    <ul id="songlist">
+      <% @artist.songs.each do |song| %>
+      <li id="<%= song.id %>">
+        <div id="delete <%= song.id %>" onclick="deleteSong(<%= song.id %>)" class="btn btn-info">Delete</div>
+      <%= song.title %></li>
+    <% end %>
+    </ul>
   </div>
-</div>
-
-
-<h2 class="text-center play_title"><%= @artist.name %>'s Songs:</h2>
-
-<!-- add a song -->
-
-    <%= form_for [@artist, @artist.songs.new], remote: true do |f| %>
-          <%= f.label :title %>
-          <%= f.text_field :title %>
-          <%= f.submit "New Song" %>
-      <% end %>
 
 
 
-  <!-- Remove song -->
-  <ul>
-  <% @songs.each do |song| %>
+  <h3><a href="#" id="deleteAll">  Delete All Crap </a><h3>
 
-      <!-- `id` attribute finds the correct element to remove using jQuery -->
-    <li id="<%= song.id %>">
-        <h3 class="text-center"><%= song.title %></h3>
-            <div class="text-center">
-            <%= link_to "Delete", [@artist, song], method: :delete, remote: true %>
-       <% end %>
-    </li
-  </ul>
 
-<!-- end -->
-
-<!-- remove artist -->
-<div class="container-fluid buttons_row">
-  <div class="col-xs-12">
-    <div class="text-center">
-      <%= link_to artists_path do %>
-        <i class="fa fa-arrow-circle-o-left fa-3x" aria-hidden="true"></i>
-      <% end %>
-    </div>
-  </div>
-  <h3><%= link_to "Delete Artist", artist_path, method: :delete, data: { confirm: "Are you sure you want to delete this artist?" } %></h3>
-</div>
+<%= link_to artists_path do %>
+  <% end %>
+<h3><%= link_to "Delete Artist", artist_path, method: :delete %></h3>

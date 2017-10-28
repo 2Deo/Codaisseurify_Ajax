@@ -1,18 +1,32 @@
-$(function(){
-  $("form").submit(function(event){
-    event.preventDefault();
 
-    var action = $(this).attr('action');
-    var method = $(this).attr('method');
+function deleteSong(songId){
 
-    var title = $(this).find('#song_title').val();
+  $.ajax({
+    type: "DELETE",
+    url: "artist_id/" + "songs/" + songId + ".json",
+    contentType: "application/json",
+    dataType: "json"
+  })
+  .done(function(data){
+    var item = document.getElementById(songId);
+    item.parentNode.removeChild(item);
+  });
+}
 
+
+$(document).on('click', "a#deleteAll", function(){
+
+  $.each($("li"), function(){
+  var id = $("#delete").attr('href');
+  var songId = $(this).attr('id');
 
     $.ajax({
-          method: method,
-          url: action,
-          data: { title: title }
+      type: "DELETE",
+      url: id + "/songs/" + songId + ".json",
+      contentType: "application/json",
+      dataType: "json"})
+      $(this).remove();
 
-        });
-  });
+});
+
 });

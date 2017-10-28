@@ -23,7 +23,20 @@ class Api::SongsController < ApplicationController
         message: "Song created",
         song: song
       }.to_json
+    else
+    render status: 422, json: {
+      errors: song.errors
+    }.to_json
     end
+  end
+
+  def destroy
+    song = Song.find(params[:id])
+    song.destroy
+
+    render status: 200, json: {
+      message: "song deleted"
+    }.to_json
   end
 
   private

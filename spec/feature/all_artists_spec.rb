@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Manage songs', js: true do
+feature 'All Artists', js: true do
   scenario 'checks all artists button' do
 
     visit '/artists/'

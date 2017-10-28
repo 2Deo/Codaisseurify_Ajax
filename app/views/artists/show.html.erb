@@ -5,10 +5,18 @@
 <h3><%= @artist.name %>'s Songs:</h3>
 
 
-
+  <div class="songGroup">
+    <ul id="songlist">
+      <% @artist.songs.each do |song| %>
+      <li id="<%= song.id %>">
+        <div id="delete <%= song.id %>" onclick="deleteSong(<%= song.id %>)" class="btn btn-danger">Delete Song</div>  
+      <%= song.title %></li>
+    <% end %>
+    </ul>
+  </div>
 
 
 <!-- remove artist -->
-      <%= link_to artists_path do %>
-      <% end %>
+   <%= link_to artists_path do %>
+  <% end %>
 <h3><%= link_to "Delete Artist", artist_path, method: :delete %></h3>

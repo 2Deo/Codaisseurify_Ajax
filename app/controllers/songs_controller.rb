@@ -1,5 +1,4 @@
 class SongsController < ApplicationController
-  before_action :find_artist, only: [:create]
 
 
     def new
@@ -35,13 +34,6 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
     @song.destroy
 
-    respond_to do |format|
-      if @song.destroy
-        format.html { redirect_to @song.artist}
-        format.json { render :show, status: :deleted, location: @song }
-        format.js
-      end
-    end
   end
 
 
@@ -52,7 +44,7 @@ class SongsController < ApplicationController
   end
 
   def song_params
-    song_params = params.require(:song).permit(:title, :artist_id)
+    song_params = params.require(:song).permit(:title)
   end
 
 end

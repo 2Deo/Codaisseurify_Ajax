@@ -36,11 +36,11 @@ $(document).on('click', "a#deleteAll", function(){
 function createSong(title) {
 
   var newSong = { title: title };
-  var id = $("#add-song").focus()
+  var id = $("#add-song").attr('href');
 
   $.ajax({
     type: "POST",
-    url: id + "/songs" + ".json",
+    url: id + "/songs.json",
     data: JSON.stringify({
         song: newSong
     }),
@@ -51,7 +51,7 @@ function createSong(title) {
   .done(function(data){
     console.log(data);
 
-    var id = $("#add-song");
+    var id = $("#add-song").attr('href');
 
     var listItem = $("<li></li>");
     listItem.addClass("song-item");
@@ -70,7 +70,6 @@ function createSong(title) {
 
   .fail(function(error){
     console.log(error);
-
     error_message = error.responseJSON.title[0];
 
   });

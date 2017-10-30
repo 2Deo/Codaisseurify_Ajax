@@ -1,6 +1,6 @@
 <div class="row">
   <div class="text-center">
-    <%= image_tag @artist.remote_image_url, class:"artist_show_images" %>
+    <%= image_tag (@artist.remote_image_url), class:"artist_show_images" %>
   </div></div>
 <h3><%= @artist.name %>'s Crappy Songs:</h3>
 
@@ -15,9 +15,13 @@
     </ul>
   </div>
 
+  <h3><a href="#" id="deleteAll">  Delete All </a><h3>
 
 
-  <h3><a href="#" id="deleteAll">  Delete All Crap </a><h3>
+    <form onSubmit="submitSong(); return false">
+       <input href="#" id="add-song" placeholder="Add a Song" required="true">
+     </form>
+
 
 
 <%= link_to artists_path do %>

@@ -1,12 +1,14 @@
 class ArtistsController < ApplicationController
-  before_action :find_artist, only: [:show, :create, :destroy]
+  before_action :find_artist, only: [:show]
 
     def index
       @artists = Artist.all
     end
 
     def show
+
       @songs = @artist.songs
+
     end
 
     def create
@@ -23,5 +25,9 @@ class ArtistsController < ApplicationController
 
     def find_artist
       @artist = Artist.find(params[:id])
+    end
+
+    def song_params
+      params.require(:song).permit(:title, :artist_id)
     end
 end

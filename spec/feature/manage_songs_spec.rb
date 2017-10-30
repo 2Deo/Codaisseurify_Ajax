@@ -8,7 +8,7 @@ feature 'Manage songs', js: true do
 
   scenario 'add a song' do
 
-    visit artists_url
+    visit artists_path
 
     fill_in 'title', with: 'Popify'
 
@@ -19,7 +19,7 @@ feature 'Manage songs', js: true do
 
   scenario 'delete a song' do
 
-    visit artists_url
+    visit artists_path
 
     page.accept_confirm do
       click_link 'Delete'
@@ -29,7 +29,7 @@ feature 'Manage songs', js: true do
   end
 
   scenario 'delete all' do
-    visit artists_url
+    visit artists_path
 
     page.find("#deleteAll").click
 
